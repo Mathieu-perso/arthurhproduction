@@ -1,0 +1,46 @@
+services:
+  database:
+    image: mysql:8.0
+    container_name: database
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: arthurhproduction
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - db_data:/var/lib/mysql
+
+  back:
+    build: ./back
+    container_name: back
+    restart: always
+    volumes:
+      - ./back:/var/www/html
+    depends_on:
+      - database
+
+  front:
+    build: ./front
+    container_name: front
+    volumes:
+      - site_static:/app/buildF
+
+  caddy:
+    image: caddy:alpine
+    container_name: caddy_server
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./back:/var/www/html
+      - site_static:/var/www/react
+    depends_on:
+      - back
+      - front
+
+volumes:
+  db_data:
+  site_static:

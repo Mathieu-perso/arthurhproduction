@@ -1,0 +1,14 @@
+:80 {
+    root * /var/www/react
+    encode gzip
+
+    handle /api/* {
+        root * /var/www/html/public
+        php_fastcgi backend:9000
+    }
+
+    handle {
+        try_files {path} /index.html
+        file_server
+    }
+}

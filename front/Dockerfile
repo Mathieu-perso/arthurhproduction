@@ -1,11 +1,11 @@
-FROM node:20-alpine AS builder
+FROM node:22-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY front/package*.json ./
 RUN npm install
 
-COPY . .
-RUN npm run build
 
-CMD ["sh", "-c", "if [ -d dist ]; then cp -r dist/. /app/build/; else cp -r build/. /app/build/; fi"]
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]

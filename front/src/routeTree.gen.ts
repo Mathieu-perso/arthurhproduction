@@ -9,38 +9,141 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SelectionVoyageRouteImport } from './routes/selection/voyage'
+import { Route as SelectionModeRouteImport } from './routes/selection/mode'
+import { Route as SelectionEvenementsRouteImport } from './routes/selection/evenements'
 
+const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
+  id: '/mentions-legales',
+  path: '/mentions-legales',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AProposRoute = AProposRouteImport.update({
+  id: '/a-propos',
+  path: '/a-propos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SelectionVoyageRoute = SelectionVoyageRouteImport.update({
+  id: '/selection/voyage',
+  path: '/selection/voyage',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SelectionModeRoute = SelectionModeRouteImport.update({
+  id: '/selection/mode',
+  path: '/selection/mode',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SelectionEvenementsRoute = SelectionEvenementsRouteImport.update({
+  id: '/selection/evenements',
+  path: '/selection/evenements',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/contact': typeof ContactRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
+  '/selection/evenements': typeof SelectionEvenementsRoute
+  '/selection/mode': typeof SelectionModeRoute
+  '/selection/voyage': typeof SelectionVoyageRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/contact': typeof ContactRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
+  '/selection/evenements': typeof SelectionEvenementsRoute
+  '/selection/mode': typeof SelectionModeRoute
+  '/selection/voyage': typeof SelectionVoyageRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/contact': typeof ContactRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
+  '/selection/evenements': typeof SelectionEvenementsRoute
+  '/selection/mode': typeof SelectionModeRoute
+  '/selection/voyage': typeof SelectionVoyageRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/a-propos'
+    | '/contact'
+    | '/mentions-legales'
+    | '/selection/evenements'
+    | '/selection/mode'
+    | '/selection/voyage'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/a-propos'
+    | '/contact'
+    | '/mentions-legales'
+    | '/selection/evenements'
+    | '/selection/mode'
+    | '/selection/voyage'
+  id:
+    | '__root__'
+    | '/'
+    | '/a-propos'
+    | '/contact'
+    | '/mentions-legales'
+    | '/selection/evenements'
+    | '/selection/mode'
+    | '/selection/voyage'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AProposRoute: typeof AProposRoute
+  ContactRoute: typeof ContactRoute
+  MentionsLegalesRoute: typeof MentionsLegalesRoute
+  SelectionEvenementsRoute: typeof SelectionEvenementsRoute
+  SelectionModeRoute: typeof SelectionModeRoute
+  SelectionVoyageRoute: typeof SelectionVoyageRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/mentions-legales': {
+      id: '/mentions-legales'
+      path: '/mentions-legales'
+      fullPath: '/mentions-legales'
+      preLoaderRoute: typeof MentionsLegalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/a-propos': {
+      id: '/a-propos'
+      path: '/a-propos'
+      fullPath: '/a-propos'
+      preLoaderRoute: typeof AProposRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +151,38 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/selection/voyage': {
+      id: '/selection/voyage'
+      path: '/selection/voyage'
+      fullPath: '/selection/voyage'
+      preLoaderRoute: typeof SelectionVoyageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/selection/mode': {
+      id: '/selection/mode'
+      path: '/selection/mode'
+      fullPath: '/selection/mode'
+      preLoaderRoute: typeof SelectionModeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/selection/evenements': {
+      id: '/selection/evenements'
+      path: '/selection/evenements'
+      fullPath: '/selection/evenements'
+      preLoaderRoute: typeof SelectionEvenementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AProposRoute: AProposRoute,
+  ContactRoute: ContactRoute,
+  MentionsLegalesRoute: MentionsLegalesRoute,
+  SelectionEvenementsRoute: SelectionEvenementsRoute,
+  SelectionModeRoute: SelectionModeRoute,
+  SelectionVoyageRoute: SelectionVoyageRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

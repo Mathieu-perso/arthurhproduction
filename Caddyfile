@@ -1,5 +1,4 @@
-:80 {
-    root * /var/www/react
+:8081 {
     encode gzip
 
     handle /api/* {
@@ -8,7 +7,6 @@
     }
 
     handle {
-        try_files {path} /index.html
-        file_server
+        reverse_proxy front:3000
     }
 }

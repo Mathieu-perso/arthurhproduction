@@ -3,6 +3,9 @@ import Layout from "../../components/Layout";
 import MainPictureCarrousel from "../../components/MainPictureCarrousel.tsx";
 import {useState} from "react";
 import type {HomePicture} from "../../types/Picture.ts";
+import event from '@assets/event.jpg'
+import voyage from '@assets/voyage.jpg'
+import mode from '@assets/mode.jpg'
 
 export const Route = createFileRoute('/')({
   component: App,
@@ -10,23 +13,23 @@ export const Route = createFileRoute('/')({
 
 const pictures: HomePicture[] = [
   {
-    src: "/event.jpg",
+    src: event,
     alt: "event",
-    title: "Event",
-    page: "evenements",
+    title: "événement",
+    page: "evenement",
     isHighlighted: false,
   },
   {
-    src: "/voyage.jpg",
+    src: voyage,
     alt: "voyage",
-    title: "Voyage",
-    page: "voyages",
+    title: "voyage",
+    page: "voyage",
     isHighlighted: true,
   },
   {
-    src: "/mode.jpg",
+    src: mode,
     alt: "mode",
-    title: "Mode",
+    title: "mode",
     page: "mode",
     isHighlighted: false,
   }

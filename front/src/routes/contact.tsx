@@ -5,6 +5,7 @@ import Textarea from "../../components/form/Textarea.tsx";
 import Button from "../../components/form/Button.tsx";
 import {type FormEvent, useRef} from "react";
 import ContentWidth from "../../components/ContentWidth.tsx";
+import voyage from '@assets/voyage.jpg'
 
 export const Route = createFileRoute('/contact')({
   component: RouteComponent,
@@ -39,14 +40,14 @@ function RouteComponent() {
 
   return (
     <Layout
-      highlightedBackgroundSrc="/voyage.jpg"
+      highlightedBackgroundSrc={voyage}
       selectedMenu="CONTACT"
     >
       <ContentWidth>
         <form
           ref={ref}
           onSubmit={sendEmail}
-          className="flex justify-center w-full"
+          className="h-full flex justify-center items-center w-full"
         >
           <div className="flex flex-col gap-8 w-1/2">
             <h2 className="font-['Jomhuria'] text-6xl text-center text-white uppercase">

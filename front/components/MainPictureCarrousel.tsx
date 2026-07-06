@@ -1,6 +1,7 @@
 import MainPicture from "./MainPicture.tsx";
 import type {HomePicture} from "../types/Picture.ts";
 import {type MouseEvent, useState} from "react";
+import {ChevronLeft, ChevronRight} from "lucide-react";
 
 type CarrouselProps = {
   pictures: HomePicture[];
@@ -60,7 +61,7 @@ export default function MainPictureCarrousel({ pictures, onActivePictureChange }
       onMouseLeave={() => setDragStartX(null)}
     >
       <div className="absolute left-10 z-30 cursor-pointer text-white font-bold" onClick={() => slide("left")}>
-        GAUCHE
+        <ChevronLeft />
       </div>
 
       <div className="flex justify-center items-center -space-x-16 size-full">
@@ -91,7 +92,7 @@ export default function MainPictureCarrousel({ pictures, onActivePictureChange }
       </div>
 
       <div className="absolute right-10 z-30 cursor-pointer text-white font-bold" onClick={() => slide("right")}>
-        DROITE
+        <ChevronRight />
       </div>
     </div>
   );

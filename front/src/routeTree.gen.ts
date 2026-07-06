@@ -13,9 +13,7 @@ import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as SelectionVoyageRouteImport } from './routes/selection/voyage'
-import { Route as SelectionModeRouteImport } from './routes/selection/mode'
-import { Route as SelectionEvenementsRouteImport } from './routes/selection/evenements'
+import { Route as SelectionCategoryRouteImport } from './routes/selection/$category'
 
 const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
   id: '/mentions-legales',
@@ -37,19 +35,9 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SelectionVoyageRoute = SelectionVoyageRouteImport.update({
-  id: '/selection/voyage',
-  path: '/selection/voyage',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SelectionModeRoute = SelectionModeRouteImport.update({
-  id: '/selection/mode',
-  path: '/selection/mode',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SelectionEvenementsRoute = SelectionEvenementsRouteImport.update({
-  id: '/selection/evenements',
-  path: '/selection/evenements',
+const SelectionCategoryRoute = SelectionCategoryRouteImport.update({
+  id: '/selection/$category',
+  path: '/selection/$category',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -58,18 +46,14 @@ export interface FileRoutesByFullPath {
   '/a-propos': typeof AProposRoute
   '/contact': typeof ContactRoute
   '/mentions-legales': typeof MentionsLegalesRoute
-  '/selection/evenements': typeof SelectionEvenementsRoute
-  '/selection/mode': typeof SelectionModeRoute
-  '/selection/voyage': typeof SelectionVoyageRoute
+  '/selection/$category': typeof SelectionCategoryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/contact': typeof ContactRoute
   '/mentions-legales': typeof MentionsLegalesRoute
-  '/selection/evenements': typeof SelectionEvenementsRoute
-  '/selection/mode': typeof SelectionModeRoute
-  '/selection/voyage': typeof SelectionVoyageRoute
+  '/selection/$category': typeof SelectionCategoryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -77,9 +61,7 @@ export interface FileRoutesById {
   '/a-propos': typeof AProposRoute
   '/contact': typeof ContactRoute
   '/mentions-legales': typeof MentionsLegalesRoute
-  '/selection/evenements': typeof SelectionEvenementsRoute
-  '/selection/mode': typeof SelectionModeRoute
-  '/selection/voyage': typeof SelectionVoyageRoute
+  '/selection/$category': typeof SelectionCategoryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -88,27 +70,21 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/contact'
     | '/mentions-legales'
-    | '/selection/evenements'
-    | '/selection/mode'
-    | '/selection/voyage'
+    | '/selection/$category'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/a-propos'
     | '/contact'
     | '/mentions-legales'
-    | '/selection/evenements'
-    | '/selection/mode'
-    | '/selection/voyage'
+    | '/selection/$category'
   id:
     | '__root__'
     | '/'
     | '/a-propos'
     | '/contact'
     | '/mentions-legales'
-    | '/selection/evenements'
-    | '/selection/mode'
-    | '/selection/voyage'
+    | '/selection/$category'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -116,9 +92,7 @@ export interface RootRouteChildren {
   AProposRoute: typeof AProposRoute
   ContactRoute: typeof ContactRoute
   MentionsLegalesRoute: typeof MentionsLegalesRoute
-  SelectionEvenementsRoute: typeof SelectionEvenementsRoute
-  SelectionModeRoute: typeof SelectionModeRoute
-  SelectionVoyageRoute: typeof SelectionVoyageRoute
+  SelectionCategoryRoute: typeof SelectionCategoryRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -151,25 +125,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/selection/voyage': {
-      id: '/selection/voyage'
-      path: '/selection/voyage'
-      fullPath: '/selection/voyage'
-      preLoaderRoute: typeof SelectionVoyageRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/selection/mode': {
-      id: '/selection/mode'
-      path: '/selection/mode'
-      fullPath: '/selection/mode'
-      preLoaderRoute: typeof SelectionModeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/selection/evenements': {
-      id: '/selection/evenements'
-      path: '/selection/evenements'
-      fullPath: '/selection/evenements'
-      preLoaderRoute: typeof SelectionEvenementsRouteImport
+    '/selection/$category': {
+      id: '/selection/$category'
+      path: '/selection/$category'
+      fullPath: '/selection/$category'
+      preLoaderRoute: typeof SelectionCategoryRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -180,9 +140,7 @@ const rootRouteChildren: RootRouteChildren = {
   AProposRoute: AProposRoute,
   ContactRoute: ContactRoute,
   MentionsLegalesRoute: MentionsLegalesRoute,
-  SelectionEvenementsRoute: SelectionEvenementsRoute,
-  SelectionModeRoute: SelectionModeRoute,
-  SelectionVoyageRoute: SelectionVoyageRoute,
+  SelectionCategoryRoute: SelectionCategoryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

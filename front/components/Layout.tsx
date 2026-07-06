@@ -5,15 +5,17 @@ export default function Layout({
   highlightedBackgroundSrc,
   highlightedBackgroundTitle,
   selectedMenu,
+  screenHeight = true,
   children
 }: {
   highlightedBackgroundSrc: string,
   highlightedBackgroundTitle?: string,
   selectedMenu?: string,
+  screenHeight?: boolean,
   children: ReactNode
 }) {
   return (
-    <div className="h-screen w-screen relative overflow-hidden">
+    <div className={`${screenHeight ? "overflow-hidden" : ""} h-screen w-screen relative`}>
       <div className="size-full absolute top-0 left-0 flex items-end">
         <div
           style={{ backgroundImage: `url(${highlightedBackgroundSrc})` }}
